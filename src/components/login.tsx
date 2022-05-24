@@ -1,0 +1,100 @@
+import styled from "styled-components";
+import React, { useEffect } from "react";
+import Chart from "../images/Chart.png";
+import Github from "../images/Github.png";
+const Page = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 0 999999px;
+  z-index: 2;
+  margin: auto;
+  width: 40%;
+  height: 45%;
+  border-radius: 50px;
+  background-color: #ffffff;
+`;
+const Btn = styled.div`
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 30px;
+  width: 78%;
+  height: 24%;
+  background-color: #696969;
+  :hover {
+    background-color: #000000;
+  }
+`;
+const Welcome = styled.img`
+  position: absolute;
+  width: 30%;
+  height: 25%;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+`;
+const Logo = styled.img`
+  width: 9%;
+  height: 50%;
+  position: absolute;
+  left: 18%;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+`;
+const Text = styled.div`
+  position: absolute;
+  font-family: "Noto Sans", sans-serif;
+  bottom: 0;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #ffffff;
+`;
+
+export default function Loginpage() {
+  const loginUri = `https://github.com/login/oauth/authorize?client_id=473dfd7613940c1b7677`;
+
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
+
+  return (
+    <>
+      <div>
+        <Page>
+          <Welcome src={Chart}></Welcome>
+          <a href={loginUri}>
+            <Btn>
+              <Logo src={Github}></Logo>
+
+              <Text>Login in Github</Text>
+            </Btn>
+          </a>
+        </Page>
+      </div>
+    </>
+  );
+}

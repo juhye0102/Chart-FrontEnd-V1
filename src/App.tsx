@@ -1,13 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 import Header from "./components/header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Mypage from "./components/mypage";
-import Meal from "./components/meal";
-import Section from "./components/section";
-import Schedule from "./components/schdule";
+import Mypage from "./components/mypage/mypage";
+import Mainpage from "./components/mainpage/mainpage";
+import Schedule from "./components/schedluepage/schedule";
 import { RecoilRoot } from "recoil";
-import Board from "./components/board";
-import LoginPage from "./components/loginPage";
+import Board from "./components/boardpage/board";
+import Githubpage from "./components/mypage/githubpage";
 const GlobalStyle = createGlobalStyle`
 body {
   background: #f4f5f8;
@@ -19,30 +18,19 @@ function App() {
       <RecoilRoot>
         <BrowserRouter>
           <GlobalStyle />
-
           <Routes>
             <Route
               path="/"
               element={
                 <>
-                  <Meal />
-                  <Section />
+                  <Mainpage />
                 </>
               }
             />
-            <Route
-              path="/login"
-              element={
-                <>
-                  <LoginPage />
-                  <Meal />
-                  <Section />
-                </>
-              }
-            />
-            <Route path="/login/mypage" element={<Mypage />} />
-            <Route path="/login/board" element={<Board />} />
-            <Route path="/login/schedule" element={<Schedule />} />
+            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/board" element={<Board />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/github" element={<Githubpage />} />
           </Routes>
           <Header />
         </BrowserRouter>

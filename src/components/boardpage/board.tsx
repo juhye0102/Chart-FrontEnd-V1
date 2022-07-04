@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import Pagination from "../hooks/Pagination";
+import Pagination from "./Pagination";
+import Boardpage from "./boardpage";
 
 interface Airline {
   id: number;
@@ -47,7 +48,8 @@ function App() {
         "https://api.instantwebtools.net/v1/passenger",
         { params }
       );
-
+      console.log(totalPages);
+      console.log(data);
       setTotalPages(totalPages);
       setItems(data);
     };
@@ -57,7 +59,7 @@ function App() {
 
   return (
     <>
-      <ul>
+      {/* <ul>
         {items.map((item) => (
           <li key={item._id}>{item.name}</li>
         ))}
@@ -66,7 +68,8 @@ function App() {
         count={totalPages}
         page={page}
         onPageChange={handlePageChange}
-      />
+      /> */}
+      <Boardpage />
     </>
   );
 }

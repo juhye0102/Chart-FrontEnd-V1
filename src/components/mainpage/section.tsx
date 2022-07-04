@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import board from "../images/board.png";
-import clock from "../images/clock.png";
+import board from "../../images/board.png";
+import clock from "../../images/clock.png";
 import { BsPerson } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Sc = styled.div`
   position: relative;
   left: 0;
@@ -9,13 +10,13 @@ const Sc = styled.div`
   margin: 0 auto;
   border-radius: 40px;
   background-color: #ffffff;
-  margin-bottom: 65px;
+  top: 240px;
+  margin-bottom: 70px;
   height: 465px;
   width: 1150px;
   :hover {
     transition-duration: 1s;
-    width: 1200px;
-    height: 500px;
+    transform: scale(1.1, 1.1);
   }
 `;
 const Img = styled.img`
@@ -68,31 +69,29 @@ const Born = styled.h1`
   color: #696969;
 `;
 const Tb = styled.div`
+  background-color: blue;
   position: static;
   border-radius: 40px;
   width: 545px;
   height: 465px;
   background-color: #ffffff;
-  margin-right: 30px;
-  margin-left: 30px;
   :last-child {
     position: relative;
   }
   :hover {
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 565px;
-    height: 500px;
+    transform: scale(1.1, 1.1);
     transition-duration: 1s;
   }
 `;
 const Po = styled.div`
+  top: 2086px;
   position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
   display: flex;
-  width: 1210px;
+  justify-content: space-between;
+  width: 1150px;
   height: 530px;
   padding-bottom: 65px;
 `;
@@ -183,12 +182,14 @@ export default function Section() {
             <Person />
           </Tb>
           <Tb>
-            <Bl1 />
-            <Bl2 />
-            <Bl3 />
-            <Bl4 />
-            <Gb>Github Commit</Gb>
-            <Cm>커밋 확인</Cm>
+            <Link to="/github">
+              <Bl1 />
+              <Bl2 />
+              <Bl3 />
+              <Bl4 />
+              <Gb>Github Commit</Gb>
+              <Cm>커밋 확인</Cm>
+            </Link>
           </Tb>
         </Po>
       </>

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import React, { useEffect } from "react";
-import Chart from "../images/Chart.png";
-import Github from "../images/Github.png";
+import Chart from "../../images/Chart.png";
+import Github from "../../images/Github.png";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginPageState } from "../../State/atom";
 const Page = styled.div`
   position: fixed;
   left: 0;
@@ -65,9 +67,9 @@ const Text = styled.div`
   color: #ffffff;
 `;
 
-export default function Loginpage() {
-  const loginUri = `https://github.com/login/oauth/authorize?client_id=473dfd7613940c1b7677`;
-
+export default function Signin() {
+  const [state, setState] = useRecoilState(loginPageState);
+  const loginUri = `https://github.com/login/oauth/authorize?scope=user&client_id=e68697d72d75b1f8461f`;
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
@@ -80,7 +82,9 @@ export default function Loginpage() {
       window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
     };
   }, []);
-
+  const Endlogin = () => {
+    setState(!state);
+  };
   return (
     <>
       <div>
@@ -88,7 +92,7 @@ export default function Loginpage() {
           <Welcome src={Chart}></Welcome>
           <a href={loginUri}>
             <Btn>
-              <Logo src={Github}></Logo>
+              <Logo src={Github} onClick={Endlogin}></Logo>
 
               <Text>Login in Github</Text>
             </Btn>

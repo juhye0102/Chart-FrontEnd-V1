@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "../images/Appicon.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Loginpage from "./login";
-import { useRecoilState } from "recoil";
-import loginPageState from "../atom";
+import Signin from "./loginpage/signin";
+import Signup from "./loginpage/signup";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { isSignUp, loginState } from "../State/atom";
+import { loginPageState } from "../State/atom";
+type arrprops = {
+  value: string;
+  id: string;
+};
 const Head = styled.header`
   position: fixed;
   z-index: 2;
   width: 100%;
-  height: 70px;
+  height: 90px;
   top: 0px;
   left: 0px;
   padding: 0%;
@@ -65,7 +71,7 @@ const ItemName = styled(Link)`
   }
 `;
 const LogIn = styled.div`
-  margin: 0px 40px 11px 45px;
+  margin-right: 80px;
   font-size: 20px;
   opacity: 0.61;
   color: #000000;
@@ -77,24 +83,61 @@ const LogIn = styled.div`
     color: #93caee;
   }
 `;
-const arr = [
-  { value: "시간표", id: "/login/schedule" },
-  { value: "게시판", id: "/login/board" },
-  { value: "마이페이지", id: "/login/mypage" },
+const Logup = styled.div`
+  margin: 0px 20px 11px 45px;
+  font-size: 20px;
+  opacity: 0.61;
+  color: #000000;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: #93caee;
+  }
+`;
+const Slash = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 135px;
+  margin-left: 10px;
+  list-style: none;
+  width: 20px;
+  height: 30px;
+  transform: rotate(35deg);
+  border-left: 2px solid rgba(0, 0, 0, 0.61);
+`;
+const arr: arrprops[] = [
+  { value: "시간표", id: "/schedule" },
+  { value: "게시판", id: "/board" },
+  { value: "마이페이지", id: "/mypage" },
 ];
 export default function Header() {
   // const searchInputRef = useRef<any>(null);
   // const [isSearchMode, setIsSearchMode] = useState<boolean>(false);
-  const [state, setState] = useRecoilState<boolean>(loginPageState);
-  const showLogIn = () => {
+  const [state, setState] = useRecoilState<boolean>(loginState);
+  const [signState, setSignState] = useRecoilState<boolean>(loginPageState);
+  const setIsState = useSetRecoilState(isSignUp);
+  const showSignup = () => {
     setState(!state);
+  };
+  const showSignin = () => {
+    setSignState(!signState);
+    setIsState(true);
   };
   // window.onclick((e) => setState(false));
   return (
     <>
       {state ? (
         <>
-          <Loginpage />
+          <Signup />
+        </>
+      ) : (
+        <></>
+      )}
+      {signState ? (
+        <>
+          <Signin />
         </>
       ) : (
         <></>
@@ -110,7 +153,13 @@ export default function Header() {
             </li>
           ))}
           <li>
-            <LogIn onClick={showLogIn}>Login</LogIn>
+            <Logup onClick={showSignup}>Signup</Logup>
+          </li>
+          <li>
+            <Slash></Slash>
+          </li>
+          <li>
+            <LogIn onClick={showSignin}>Signin</LogIn>
           </li>
         </Mainmenu>
       </Head>

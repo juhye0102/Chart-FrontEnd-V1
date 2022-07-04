@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineEllipsis } from "react-icons/ai";
 
-import usePagination from "./usePaginaion";
+import usePagination from "../../hooks/usePaginaion";
 
 const Navigation = styled.nav``;
 

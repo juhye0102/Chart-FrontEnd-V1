@@ -1,10 +1,13 @@
 import styled from "styled-components";
+type arrprop = {
+  id: string;
+};
 const Ta = styled.div`
   position: absolute;
-  height: 624px;
-  width: 699px;
+  height: 832px;
+  width: 922px;
   left: 50%;
-  top: 130px;
+  top: 125px;
   border-radius: 40px;
   background-color: #ffffff;
   margin-bottom: 200px;
@@ -12,7 +15,7 @@ const Ta = styled.div`
 const Ln = styled.div`
   position: absolute;
   width: 2px;
-  height: 594px;
+  height: 800px;
   background: #93caee;
   border-radius: 1px;
   left: 100px;
@@ -20,7 +23,7 @@ const Ln = styled.div`
 `;
 const Ln1 = styled.div`
   position: absolute;
-  width: 669px;
+  width: 900px;
   height: 2px;
   left: 15px;
   top: 100px;
@@ -44,7 +47,7 @@ const Day = styled.li`
   font-weight: 700;
   font-family: "Noto Sans KR", sans-serif;
   color: #b5b3b3;
-  margin-left: 85px;
+  margin-left: 120px;
 `;
 const Day1 = styled.li`
   list-style: none;
@@ -52,7 +55,7 @@ const Day1 = styled.li`
   font-weight: 700;
   font-family: "Noto Sans KR", sans-serif;
   color: #b5b3b3;
-  margin-top: 35px;
+  margin-top: 65px;
 `;
 const Sr = styled.div`
   position: absolute;
@@ -60,7 +63,7 @@ const Sr = styled.div`
   top: 65px;
   left: 75px;
   ul {
-    padding-left: 65px;
+    padding-left: 100px;
   }
   li {
     list-style: none;
@@ -69,7 +72,7 @@ const Sr = styled.div`
     font-weight: 700;
     line-height: 36px;
     color: #696969;
-    margin-top: 35px;
+    margin-top: 65px;
   }
 `;
 const H2 = styled.div`
@@ -90,23 +93,23 @@ const H1 = styled.div`
   font-size: 60px;
   color: #696969;
 `;
-const arr = [
+const arr: arrprop[] = [
   { id: "월" },
   { id: "화" },
   { id: "수" },
   { id: "목" },
   { id: "금" },
 ];
-const arr1 = [
-  { key: "1교시" },
-  { key: "2교시" },
-  { key: "3교시" },
-  { key: "4교시" },
-  { key: "5교시" },
-  { key: "6교시" },
-  { key: "7교시" },
+const arr1: arrprop[] = [
+  { id: "1교시" },
+  { id: "2교시" },
+  { id: "3교시" },
+  { id: "4교시" },
+  { id: "5교시" },
+  { id: "6교시" },
+  { id: "7교시" },
 ];
-const arr2 = [
+const arr2: arrprop[][] = [
   [
     { id: "창체" },
     { id: "체창" },
@@ -153,7 +156,13 @@ const arr2 = [
     { id: "체창" },
   ],
 ];
-const arr3 = [{ id: "0" }, { id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
+const arr3: arrprop[] = [
+  { id: "0" },
+  { id: "1" },
+  { id: "2" },
+  { id: "3" },
+  { id: "4" },
+];
 export default function Schedule() {
   return (
     <>
@@ -169,7 +178,7 @@ export default function Schedule() {
         </Sort>
         <St>
           {arr1.map((user) => (
-            <Day1>{user.key}</Day1>
+            <Day1>{user.id}</Day1>
           ))}
         </St>
         <Sr>

@@ -10,7 +10,7 @@
 
 ---
 
-**_Daehee And Friend의 약자에요!_**
+**_Daehee And Friend의 약자예요!_**
 
 \*따뜻히 품어주세요.....
 
